@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login/Signup Page -->
+        <div id="auth-page" class="page active">
+            <div class="auth-container">
+                <div class="auth-form">
+                    <h2 id="auth-title">Login to ExpenseTracker</h2>
+                    <form id="auth-form">
+                        <div id="name-field" class="form-group" style="display: none;">
+                           <input type="text" id="name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password" placeholder="Password" required>
+                        </div>
+                        <div id="country-field" class="form-group" style="display: none;">
+                            <select id="country">
+                                <option value="United States">United States</option>
+                                <option value="India">India</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Australia">Australia</option>
+                            </select>
+                        </div>
+                        <button type="submit" id="auth-button">Login</button>
+                    </form>
+                    <p id="auth-switch">
+                        Don't have an account? 
+                        <a href="#" id="switch-mode">Sign up</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page">
+            <nav class="navbar">
+                <div class="nav-brand">ExpenseTracker</div>
+                <div class="nav-user">
+                    Welcome, <span id="user-name"></span> (<span id="user-role"></span>)
+                    <button onclick="logout()" class="logout-btn">Logout</button>
+                </div>
+            </nav>
+
+            <div class="main-content">
+                <!-- Admin/Manager Sections -->
+                <div id="admin-sections" style="display: none;">
+                    <div class="card">
+                        <h2>User Management</h2>
+                        <form id="user-form">
+                            <div class="form-group">
+                                <input type="text" id="user-name-input" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="user-email" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="user-password" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <select id="user-role-select" required>
+                                    <option value="employee">Employee</option>
+                                    <option value="manager">Manager</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primary">Add User</button>
+                        </form>
+                        
+                        <h3>Company Users</h3>
+                        <div id="users-list">
+                            <p>No users found.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Approval Queue</h2>
+                        <div id="approval-queue">
+                            <p>No expenses pending approval.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expense Submission -->
+                <div class="card">
+                    <h2>Submit New Expense</h2>
+                    <form id="expense-form">
+                        <div class="form-group">
+                            <input type="number" id="expense-amount" placeholder="Amount" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="expense-category" required>
+                                <option value="">Select Category</option>
+                                <option value="travel">Travel</option>
+                                <option value="food">Food & Dining</option>
+                                <option value="accommodation">Accommodation</option>
+                                <option value="office">Office Supplies</option>
+                                <option value="transportation">Transportation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="expense-description" placeholder="Description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="expense-date" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Submit Expense</button>
+                    </form>
+                </div>
+
+                <!-- My Expenses -->
+                <div class="card">
+                    <h2>My Expenses</h2>
+                    <div id="expenses-list">
+                        <p>No expenses submitted yet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
